@@ -1,0 +1,31 @@
+{
+  "name": "react-study",
+  "version": "1.0.0",
+  "description": "react",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --config ./build/webpack.config.js --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeroone001/react-study.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "lys",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeroone001/react-study/issues"
+  },
+  "homepage": "https://github.com/zeroone001/react-study#readme",
+  "devDependencies": {
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
