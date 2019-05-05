@@ -5,6 +5,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 let devConfig = webpackMerge(baseConfig, {
+    output: {
+        filename: '[name].[hash:7].js',
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: './'
+    },
     mode: 'production',
     module: {
         rules: [

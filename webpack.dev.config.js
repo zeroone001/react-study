@@ -1,24 +1,26 @@
 const webpackMerge = require('webpack-merge');
 const baseConfig = require('./webpack.config.js');
 const path = require('path');
+const webpack = require('webpack');
 
+console.log('test', path.join(__dirname, 'dist'));
 let devConfig = webpackMerge(baseConfig, {
-    entry: {
-        app: path.resolve(__dirname, '../src/index.jsx')
-    },
     output: {
         filename: '[name].[hash:7].js',
-        path: path.resolve(__dirname, '../dist'),
-        publicPath: './'
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
     devServer: {
         port: 9000,
-        host: '::',
+        host: '0.0.0.0',
         compress: true,
-        contentBase: path.resolve(__dirname, '../dist'),
+        inline: true,
+        hot: true,
+        contentBase: path.join(__dirname, 'dist'),
         watchContentBase: true,
         overlay: true,
         disableHostCheck: true,
+        historyApiFallback: true,
         stats: {
             colors: true,
             chunks: false,
@@ -29,6 +31,11 @@ let devConfig = webpackMerge(baseConfig, {
     },
     devtool: 'source-map',
     mode: 'development',
+    plugins: [
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin()
+    ]
+
     // module: {
     //     rules: [
 
