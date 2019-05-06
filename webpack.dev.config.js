@@ -10,6 +10,25 @@ let devConfig = webpackMerge(baseConfig, {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/'
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            minSize: 30000,
+            maxSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 2,
+            name: false,
+            cacheGroups: {
+                vendors: {
+                    name: 'vendors',
+                    reuseExistingChunk: true,
+                    // minChunks: pages.length - 1,
+                    test: /[\\/]node_modules[\\/]/
+                }
+            }
+        },
+    },
     devServer: {
         port: 9000,
         host: '0.0.0.0',
